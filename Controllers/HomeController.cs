@@ -5,7 +5,7 @@ using CSharp.MVC.Models;
 
 namespace CSharp.MVC.Controllers
 {
-  [Route("v1")]
+  [Route("inicio")]
   public class HomeController : Controller
   {
     [HttpGet]
