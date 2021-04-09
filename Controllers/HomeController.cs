@@ -21,6 +21,7 @@ namespace CSharp.MVC.Controllers
       context.Categories.Add(category);
       context.Products.Add(product);
       await context.SaveChangesAsync();
+
       return Ok(new
       {
         message = "Dados configurados"
