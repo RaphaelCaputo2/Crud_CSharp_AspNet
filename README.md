@@ -6,4 +6,4 @@
 #### para ver a documentação da api basta acessar
 
 
-#####https://shopcaputov1.azurewebsites.net/swagger/index.html
+https://shopcaputov1.azurewebsites.net/swagger/index.html
