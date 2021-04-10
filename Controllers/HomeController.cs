@@ -12,8 +12,8 @@ namespace CSharp.MVC.Controllers
     [Route("")]
     public async Task<ActionResult<dynamic>> Get([FromServices] DataContext context)
     {
-      var employee = new User { Id = 1, Usename = "robin", Password = "robin", Role = "employee" };
-      var manager = new User { Id = 2, Usename = "batman", Password = "batman", Role = "manager" };
+      var employee = new User { Id = 1, Usename = "robin", Password = "robin", Role = "funcionario" };
+      var manager = new User { Id = 2, Usename = "batman", Password = "batman", Role = "gerente" };
       var category = new Category { Id = 1, Title = "Informática" };
       var product = new Product { Id = 1, Category = category, Title = "Mouse", Price = 299, Description = "Mouse Gamer" };
       context.Users.Add(employee);

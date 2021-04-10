@@ -17,7 +17,7 @@ namespace CSharp.MVC.Models
     public string Description { get; set; }
 
     [Required(ErrorMessage = "Esse campo é obrigatório")]
-    [Range(1, int.MaxValue, ErrorMessage = "O preço deve ser maior que zero")]
+    [Range(0, double.PositiveInfinity, ErrorMessage = "O preço deve ser maior que zero")]
 
     public decimal Price { get; set; }
 
