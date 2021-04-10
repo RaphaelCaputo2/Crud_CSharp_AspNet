@@ -34,8 +34,6 @@ namespace CSharp.MVC
       });
       // services.AddResponseCaching();
 
-
-
       services.AddControllers();
 
       var key = Encoding.ASCII.GetBytes(Settings.Secret);
@@ -57,53 +55,35 @@ namespace CSharp.MVC
         };
       });
 
-
       // services.AddDbContext<DataContext>(opt => opt.UseInMemoryDatabase("Database"));
       services.AddDbContext<DataContext>(
         opt => opt.UseSqlServer(
           Configuration.GetConnectionString("connectionsString")
         )
       );
-      services.AddScoped<DataContext, DataContext>();
-
 
       services.AddSwaggerGen(c =>
       {
         c.SwaggerDoc("v1", new OpenApiInfo { Title = "Crud Shop API", Version = "v1" });
       });
-
-
-
-    
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env, DataContext dataContext)
     {
-       if (env.IsDevelopment())
-       {
+      if (env.IsDevelopment())
         app.UseDeveloperExceptionPage();
-        
-       }
 
       app.UseHttpsRedirection();
 
       app.UseSwagger();
-      app.UseSwaggerUI(c =>
-      {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Crud Shop API v1");
-      });
-
-
+      app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Crud Shop API v1"));
       app.UseRouting();
       app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
       app.UseAuthentication();
       app.UseAuthorization();
+      app.UseEndpoints(endpoints => endpoints.MapControllers());
 
-      app.UseEndpoints(endpoints =>
-      {
-        endpoints.MapControllers();
-      });
       dataContext.Database.Migrate();
     }
   }
