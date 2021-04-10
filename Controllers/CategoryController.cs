@@ -36,7 +36,7 @@ namespace CSharp.MVC.Controllers
     }
     [HttpPost]
     [Route("")]
-    [Authorize(Roles = "gerente")]
+    [Authorize(Roles = "funcionario")]
 
     public async Task<ActionResult<List<Category>>> Post([FromBody] Category model, [FromServices] DataContext context)
     {
